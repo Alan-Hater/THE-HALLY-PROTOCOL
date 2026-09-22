@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>AFI_DOKUMENT_03</title>
+    <style>
+        body { background: #0a0a0a; color: #aaa; font-family: monospace; padding: 30px; line-height: 1.4; }
+        .stamp { color: #00ffff; font-weight: bold; border: 1px solid #00ffff; padding: 2px 5px; display: inline-block; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="stamp">AFI // SYSTEM DATA // MERCURY MAIL LOGS</div>
+    <p><b>DATA:</b> 02.09.2026<br><b>SYSTEM:</b> Core Outbound Relay</p>
+    <hr color="#333">
+    <pre>
+TIMESTAMP: 2026-09-02 03:14:22 UTC
+FROM: core_control@afi.gov
+TO: secure_vault_relay@afi.gov
+SUBJECT: Threat Level Escalation
+----------------------------------------------------
+0x45 0x54 0x48 0x30 : CONNECTION FROM UNKNOWN NODE
+0x53 0x59 0x53 0x5F : FIREWALL BYPASS IN PROGRESS... STATUS: OK
+0x4B 0x45 0x59 0x5F : COMPONENT DETECTED IN PACKET HEADER [SYS_ID: 74]
+0x41 0x46 0x49 0x5F : System admin forced lockout sequence active.
+    </pre>
+    <br>
+    <p style="color: #666;">// ZABEZPIECZONY CZŁON LINKU 3/4: <span style="color: #00ff66;">74</span></p>
+</body>
+</html>
