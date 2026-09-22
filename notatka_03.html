@@ -4,26 +4,38 @@
     <meta charset="UTF-8">
     <title>AFI_DOKUMENT_03</title>
     <style>
-        body { background: #0a0a0a; color: #aaa; font-family: monospace; padding: 30px; line-height: 1.4; }
-        .stamp { color: #00ffff; font-weight: bold; border: 1px solid #00ffff; padding: 2px 5px; display: inline-block; margin-bottom: 20px; }
+        body { background: #0a0a0a; color: #aaa; font-family: monospace; padding: 40px; line-height: 1.4; }
+        .stamp { color: #00ffff; font-weight: bold; border: 1px solid #00ffff; padding: 5px 10px; display: inline-block; margin-bottom: 20px; text-shadow: 0 0 5px #00ffff; }
+        .container { max-width: 800px; margin: 0 auto; }
+        pre { background: #050505; padding: 15px; border: 1px solid #1a1a1a; color: #00ff66; overflow-x: auto; }
     </style>
 </head>
 <body>
-    <div class="stamp">AFI // SYSTEM DATA // MERCURY MAIL LOGS</div>
-    <p><b>DATA:</b> 02.09.2026<br><b>SYSTEM:</b> Core Outbound Relay</p>
-    <hr color="#333">
+<div class="container">
+    <div class="stamp">AFI // SECURE NET DATA // MERCURY SYSLOG</div>
+    <p><b>OBIEKT REJESTRU:</b> Core Outbound Relay Gateway<br><b>DATA LOGU:</b> 02.09.2026 03:14:22 UTC</p>
+    <hr color="#222">
+    
+    <p><b>ANALIZA SYGNAŁU:</b> Automatyczny system monitorowania ruchu sieciowego AFI wykrył anomalny wzrost aktywności na porcie wychodzącym gatewaya brzegowego. Poniższy zrzut hexadecymalny przedstawia strukturę nagłówka pakietu, który ominął standardowe reguły inspekcji stanowej IPS (Intrusion Prevention System).</p>
+    
     <pre>
 TIMESTAMP: 2026-09-02 03:14:22 UTC
-FROM: core_control@afi.gov
-TO: secure_vault_relay@afi.gov
-SUBJECT: Threat Level Escalation
-----------------------------------------------------
-0x45 0x54 0x48 0x30 : CONNECTION FROM UNKNOWN NODE
-0x53 0x59 0x53 0x5F : FIREWALL BYPASS IN PROGRESS... STATUS: OK
-0x4B 0x45 0x59 0x5F : COMPONENT DETECTED IN PACKET HEADER [SYS_ID: 74]
-0x41 0x46 0x49 0x5F : System admin forced lockout sequence active.
+ROUTER_ID: AFI-GW-BRIDGE-04
+INBOUND INTERFACE: ETH0 [VLAN 102 - CONFIDENTIAL]
+----------------------------------------------------------------------
+0x0000: 45 00 00 3c 1c 46 40 00  40 06 b2 e3 0a 01 0a 4c  E..<.F@.@......L
+0x0010: 0a 01 0a 16 01 bb 0c 22  53 59 53 5F 4b 45 59 5F  ......."SYS_KEY_
+0x0020: 37 34 00 00 00 00 00 00  53 54 41 54 55 53 5f 4f  74......STATUS_O
+0x0030: 4b 20 41 46 49 5f 4e 45  54 5f 42 59 50 41 53 53  K AFI_NET_BYPASS
+----------------------------------------------------------------------
+[ALERT] INTRUSION DETECTION SYSTEM NOTICE: SIGNATURE MATCH "CORE_EXFILTRATION".
+[SYSTEM] FORCED LOCKOUT ENFORCED BY ADMINISTRATOR CRITICAL RULE #9.
     </pre>
-    <br>
-    <p style="color: #666;">// ZABEZPIECZONY CZŁON LINKU 3/4: <span style="color: #00ff66;">74</span></p>
+    
+    <p><b>WNIOSKI Z AUDYTU:</b> Obiekt wykorzystał lukę typu zero-day w oprogramowaniu routera, aby wstrzyknąć do nagłówka stałą wartość numeryczną identyfikującą powiązany węzeł serwera. Wartość ta stanowi integralną część fizycznego indeksu katalogu składowego zapasowej bazy danych.</p>
+    
+    <br><br>
+    <p style="color: #444;">// INTEGRITY DATA SEGMENT 3/4: <span style="color: #00ff66; text-shadow: 0 0 5px #00ff66;">74</span></p>
+</div>
 </body>
 </html>
